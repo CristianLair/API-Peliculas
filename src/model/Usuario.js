@@ -1,17 +1,33 @@
 const mongoose = require('mongoose');
+const{isEmail} = require('validator/lib/isEmail');
 
-const Usuario = mongoose.model('Usuario', {
-    name: {
-        type: String,
-        required: true        
-        },
+const usuarioSchema = mongoose.Schema({
+    nombre:{
+        type: 'String',
+        require: true,
+        trim: true
 
-    
-    password: {
-        type: String,
-        required: true
     },
     
+
+    email: {
+        type: 'string',
+        require: true,
+        trim: true,
+        unique: true,
+        lowercase:true,
+        validate : [(val)=> isEmail,'Ingrese un correo electronico valido']
+    },
+
+    password: {
+        type: 'string',
+        require: true,
+        trim: true
+    },
+    registro: {
+        type: Date,
+        default: Date.now()
+    }
 });
 
-module.exports = Usuario;
+module.exports = mongoose.model('usuarios', usuarioSchema);

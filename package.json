@@ -2,18 +2,25 @@
   "name": "api",
   "version": "1.0.0",
   "description": "API para peliculas",
-  "main": "index.js",
+  "main": "src/index.js",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
     "express": "^4.17.1",
-    "mongoose": "^6.0.12"
+    "express-validator": "^6.13.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.13.5",
+    "validator": "^13.7.0"
   },
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start" : "node API/index.js",
-    "build": "ng build",
-  "heroku-postbuild": "ng build --prod"
+    "start": "node src/index.js"
+  },
+  "engines": {
+    "node": "14.16.0",
+    "npm": "6.14.11"
   },
   "author": "",
   "license": "ISC"
