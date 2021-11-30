@@ -26,7 +26,20 @@ exports.autenticarUsuario = async(req,res) =>{
             return res.status(400).json({msg:'contraseña incorrecta'});
 
         }
-        
+        const payload = {
+            usuario: {
+                _id: usuario.id
+            }
+        }
+
+        jwt.sign(payload,  ` ${process.env.JWT}`, {
+            expiresIn: 3600
+        }, (error, token) => {
+            if (error) throw error;
+
+            res.json({ token: token });
+        })
+
         res.json({msg: "usuario logueado"})
         
         
