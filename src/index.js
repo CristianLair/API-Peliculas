@@ -3,7 +3,7 @@ const app = express();
 
 const usuariosRoute = require('../Routes/usuario')
 const authindex = require ('../Routes/auth')
-
+const Usuarios = require('../src/model/Usuario')
 const conectarDB = require('./db/mongoose')
 
 
@@ -24,10 +24,16 @@ const PORT = process.env.PORT || 4500;
 
 // Ruta usuarios api/usuarios
 
+app.get('/usuariosRegistrados', (req, res) => {
+    Usuarios.find()
+        .then((result) => {
+            res.send(result)
+        })
+        .catch(err => res.status(404).send(err));
+})
+app.use('/registrarse', usuariosRoute);
 
-app.use('/api/usuarios', usuariosRoute);
-
-app.use('/api/auth',authindex);
+app.use('/login',authindex);
 
 
 
