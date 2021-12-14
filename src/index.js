@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const cors = require('cors')
 
 const usuariosRoute = require('../Routes/usuario')
 const authindex = require ('../Routes/auth')
@@ -14,6 +15,7 @@ conectarDB();
 // Habilitamos express.json
 
 app.use(express.json({extend: true}));
+app.use(cors())
 
 
 
