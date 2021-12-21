@@ -40,7 +40,7 @@ exports.autenticarUsuario = async(req,res) =>{
             res.json({ token: token });
         })
 
-        res.json({msg: "usuario logueado"})
+        
         
         
     } catch (error) {
